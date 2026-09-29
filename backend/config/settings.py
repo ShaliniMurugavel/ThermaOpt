@@ -21,6 +21,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'therma-opt-murex.vercel.app',
     'therma-55zasb5y-portfolio-7l0a.vercel.app',
+    '.vercel.app',
 ]
 
 # Application definition
