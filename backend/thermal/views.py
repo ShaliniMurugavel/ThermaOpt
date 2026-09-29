@@ -12,9 +12,29 @@ from .serializers import (
 )
 from .thermal_engine import run_simulation
 
-def health_check(request):
-    return JsonResponse({"status": "ok", "message": "ThermaOpt backend is running."})
+from django.http import JsonResponse
+from django.db import connection
 
+
+def health(request):
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT 1")
+            cursor.fetchone()
+
+        return JsonResponse({
+            "status": "ok",
+            "message": "ThermaOpt backend is running.",
+            "database": "connected"
+        })
+
+    except Exception as e:
+        return JsonResponse({
+            "status": "error",
+            "message": "Database connection failed.",
+            "error": str(e)
+        }, status=500)
+        
 class ClimateDataViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ClimateData.objects.all()
     serializer_class = ClimateDataSerializer
