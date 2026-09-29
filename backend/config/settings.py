@@ -19,7 +19,8 @@ DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'thermaopt-j6ys.onrender.com',
+    'therma-opt-murex.vercel.app',
+    'therma-55zasb5y-portfolio-7l0a.vercel.app',
 ]
 
 # Application definition
@@ -109,4 +110,12 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:5174',
     'http://127.0.0.1:5173',
     'http://127.0.0.1:5174',
+    'https://therma-opt-murex.vercel.app',
+]
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'http://127.0.0.1:5173',
+    'http://127.0.0.1:5174',
+    'https://therma-opt-murex.vercel.app',
 ]
